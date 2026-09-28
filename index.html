@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ComicCraft // AI Comic, Manga & Manhwa Creation Studio</title>
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+
+  <!-- Google Fonts: Orbitron (Sci-Fi), Bangers (Comic Title/SFX), Comic Neue (Dialogue), Space Grotesk (Tech UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,400;0,700;1,400;1,700&family=Orbitron:wght@400;600;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            space: '#0B0D17',
+            spaceLight: '#141829',
+            cyanNeon: '#00F0FF',
+            purpleNeon: '#8A2BE2',
+            pinkNeon: '#FF007F'
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            comic: ['Bangers', 'cursive'],
+            speech: ['Comic Neue', 'cursive'],
+            mono: ['Space Grotesk', 'monospace']
+          },
+          animation: {
+            fadeIn: 'fadeIn 0.25s ease-out forwards',
+            pulseSlow: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'scale(0.98)' },
+              '100%': { opacity: '1', transform: 'scale(1)' }
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Futuristic Glassmorphism & Custom Cosmic CSS -->
+  <style>
+    :root {
+      --bg-dark: #0B0D17;
+      --neon-cyan: #00F0FF;
+      --neon-purple: #8A2BE2;
+    }
+
+    body {
+      background-color: #0B0D17;
+      color: #E2E8F0;
+      font-family: 'Space Grotesk', sans-serif;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* Custom Futuristic Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(11, 13, 23, 0.8);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(138, 43, 226, 0.3);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 240, 255, 0.6);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    }
+
+    /* Cyber Glow Utilities */
+    .glow-cyan {
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+    }
+    .glow-purple {
+      box-shadow: 0 0 20px rgba(138, 43, 226, 0.35);
+    }
+    .glow-pink {
+      box-shadow: 0 0 20px rgba(255, 0, 127, 0.35);
+    }
+
+    /* Speech Bubble Text Styling */
+    .font-comic-bubble {
+      font-family: 'Comic Neue', cursive;
+      font-weight: 700;
+    }
+
+    /* Starfield Canvas Background */
+    #starfield-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Glassmorphism Panel Container */
+    .glass-card {
+      background: rgba(18, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Scanline effect for authentic retro sci-fi CRT */
+    .crt-overlay {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+      background-size: 100% 3px, 6px 100%;
+      z-index: 99;
+      opacity: 0.35;
+    }
+  </style>
+</head>
+<body class="w-screen h-screen flex relative overflow-hidden bg-[#0B0D17]">
+  
+  <!-- Interactive 60fps Starfield Canvas -->
+  <canvas id="starfield-canvas"></canvas>
+
+  <!-- CRT Retro Scanline Overlay -->
+  <div class="crt-overlay"></div>
+
+  <!-- Root Application Shell -->
+  <div id="app-root" class="relative z-10 w-full h-full flex overflow-hidden">
+    <!-- Sidebar Mount Point -->
+    <div id="sidebar-mount" class="h-full flex"></div>
+
+    <!-- Main Viewport (Header + Active View) -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden min-w-0">
+      <div id="header-mount"></div>
+      <main id="main-content-mount" class="flex-1 relative overflow-hidden flex flex-col"></main>
+    </div>
+  </div>
+
+  <!-- Modal Mount Point -->
+  <div id="modals-mount"></div>
+
+  <!-- Main ES Module Script Entry -->
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>

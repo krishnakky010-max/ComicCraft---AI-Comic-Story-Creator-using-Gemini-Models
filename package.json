@@ -1,0 +1,20 @@
+{
+  "name": "comiccraft",
+  "version": "1.0.0",
+  "description": "AI-Powered Comic, Manga, and Manhwa Creation Platform Driven by Gemini Models",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "keywords": [
+    "comic",
+    "manga",
+    "manhwa",
+    "webtoon",
+    "gemini",
+    "ai",
+    "storyboard"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}
